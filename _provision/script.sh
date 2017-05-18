@@ -17,8 +17,6 @@ apt-get update
 
 apt-get install -y php7.0-fpm php7.0-mysql php-memcache php7.0-curl php7.0-mbstring php7.0-xml
 
-MYSQL_PASS=vagrant;
-
 apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
 
 if [ -f $VAGRANT_SYNCED_DIR/vagrant/.mysql-passes ]
@@ -26,9 +24,9 @@ if [ -f $VAGRANT_SYNCED_DIR/vagrant/.mysql-passes ]
     rm -f $VAGRANT_SYNCED_DIR/vagrant/.mysql-passes
 fi
 
-echo "vagrant:${MYSQL_VAGRANT_PASS}" >> ${VAGRANT_SYNCED_DIR}/vagrant/.mysql-passes
+echo "vagrant:vagrant" >> ${VAGRANT_SYNCED_DIR}/vagrant/.mysql-passes
 
-mysql -uroot -e "CREATE USER 'vagrant'@'localhost' IDENTIFIED BY '$MYSQL_VAGRANT_PASS'"
+mysql -uroot -e "CREATE USER 'vagrant'@'localhost' IDENTIFIED BY 'vagrant'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON * . * TO 'vagrant'@'localhost';"
 mysql -uroot -e "FLUSH PRIVILEGES;"
 mysql -uroot -e "CREATE DATABASE vagrant DEFAULT CHARACTER SET utf8_mb4 DEFAULT COLLATE utf8_general_ci;"

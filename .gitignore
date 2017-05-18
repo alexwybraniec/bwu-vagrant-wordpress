@@ -1,3 +1,4 @@
 .vagrant
-/_project/_web/wp-content/uploads
+/_project/_public/
 .DS_Store
+.mysql-passes
