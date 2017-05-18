@@ -29,7 +29,7 @@ echo "vagrant:vagrant" >> ${VAGRANT_SYNCED_DIR}/vagrant/.mysql-passes
 mysql -uroot -e "CREATE USER 'vagrant'@'localhost' IDENTIFIED BY 'vagrant'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON * . * TO 'vagrant'@'localhost';"
 mysql -uroot -e "FLUSH PRIVILEGES;"
-mysql -uroot -e "CREATE DATABASE vagrant DEFAULT CHARACTER SET utf8_mb4 DEFAULT COLLATE utf8_general_ci;"
+mysql -uroot -e "CREATE DATABASE vagrant DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8_general_ci;"
 
 echo "Created vagrant database"
 
