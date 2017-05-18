@@ -1,0 +1,24 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /vagrant/_project/_web;
+    index index.html index.htm index.php;
+
+    sendfile off;
+
+    include global/restrictions.conf;
+
+    # Additional rules go here.
+
+    # Only include one of the files below.
+    include global/wordpress.conf;
+
+    location @php {
+
+            fastcgi_pass   unix:/var/run/php/php7.0-fpm.sock;
+            include fastcgi_params;
+
+    }
+
+}
